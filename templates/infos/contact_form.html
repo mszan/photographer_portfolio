@@ -1,0 +1,11 @@
+{#{% extends 'infos/about.html' %}#}
+{% load static %}
+{% block contact_form %}
+    <form action="{% url "infos-about" %}" method="POST">
+        {% csrf_token %}
+        {{ contact_form.as_p }}
+        <div class="form-actions">
+            <button type="submit">Send</button>
+        </div>
+    </form>
+{% endblock %}

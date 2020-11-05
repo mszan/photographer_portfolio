@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% if gallery %}
+        {% for image in images %}
+            <div style="border: 1px dotted red">
+                <img width="200" height="200" src="{% get_media_prefix %}{{ image.file }}" alt="{{ image.file }}">
+                <h3>{{ image.title }}</h3>
+                <h3>{{ image.desc }}</h3>
+                <h3>{{ image.desc|truncatewords:50 }}</h3>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h5>This gallery is empty.</h5>
+    {% endif %}
+{% endblock %}

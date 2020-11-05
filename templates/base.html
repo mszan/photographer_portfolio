@@ -1,0 +1,48 @@
+{# Base for other templates. #}
+{% load static %}
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {# Compressed SCSS file. #}
+    {#    {% compress css %}#}
+    {#        <link type="text/x-scss" href="{% static 'scss/main.scss' %}" rel="stylesheet" media="screen">#}
+    {#    {% endcompress %}#}
+
+    {# Custom favicon.ico static location. #}
+    {# <link rel="icon" href="{% static 'img/favicon.ico' %}"/>#}
+
+    {# Bootstrap#}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    {# Font Awesome kit. #}
+    <script src="https://kit.fontawesome.com/1f366812cf.js" crossorigin="anonymous"></script>
+
+    <title>mszan app</title>
+</head>
+<body>
+<div class="container">
+    <a href="{% url 'galleries-list' %}">Work</a>
+    <a href="{% url 'infos-about' %}">About</a>
+    {% if messages %}
+        <div class="row mt-3">
+            <div class="col-sm">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    {% block content %}{% endblock %}
+</div>
+
+{# Bootstrap #}
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</body>
+</html>
