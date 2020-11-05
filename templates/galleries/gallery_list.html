@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% if galleries %}
+        {% for gallery in galleries %}
+            <div style="border: 1px dotted red">
+                <img width="200" height="200" src="{% get_media_prefix %}{{ gallery.images.first.file }}" alt="{{ gallery.images.first }}">
+                <a href="{% url 'galleries-detail' gallery.id %}">Open this gallery</a>
+                <h3>{{ gallery.title }}</h3>
+                <h3>{{ gallery.desc }}</h3>
+                <h3>{{ gallery.desc|truncatewords:50 }}</h3>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h5>No visible galleries set.</h5>
+    {% endif %}
+{% endblock %}
