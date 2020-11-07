@@ -1,11 +1,10 @@
 from django.db import models
 
 
-class About(models.Model):
-    photo = models.ImageField()
+class Bio(models.Model):
+    image = models.ImageField()
     text = models.TextField()
+    mail_to = models.EmailField()
 
-class Contact (models.Model):
-    text = models.TextField()
-    phone = models.PositiveIntegerField()
-    mail = models.EmailField()
+    def __str__(self):
+        return self.text

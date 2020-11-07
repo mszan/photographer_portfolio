@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div>
+        <h1>Bio header</h1>
+        {% if bio %}
+            <img src="{% get_media_prefix %}{{ bio.image }}" alt="{{ bio.image }}">
+            <p>{{ bio.text }}</p>
+        {% else %}
+            Please create a single bio model instance and fill up the fields.
+        {% endif %}
+        {% include 'infos/contact_form.html' %}
+    </div>
+{% endblock %}

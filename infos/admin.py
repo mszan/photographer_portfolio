@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from infos.models import Bio
+
+admin.site.register(Bio)

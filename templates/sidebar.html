@@ -1,0 +1,33 @@
+{% block sidebar %}
+    <nav id="sidebar">
+        <div class="sidebar__header">
+            <h3>Bootstrap Sidebar</h3>
+        </div>
+        <ul>
+            {{ gallery.pk }}
+            {{ request.path }}
+            {% if 'bio' in request.path %}
+                <li class="sidebar__link--active">
+                    <a href="{% url 'infos-bio' %}">BIO / CONTACT</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{% url 'infos-bio' %}">BIO / CONTACT</a>
+                </li>
+            {% endif %}
+
+            {% for cp_gallery in cp_galleries %}
+                {% if cp_gallery.id == gallery.pk %}
+                    <li class="sidebar__link--active">
+                        <a href={% url 'galleries-detail' cp_gallery.id %}>{{ cp_gallery.title }}</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href={% url 'galleries-detail' cp_gallery.id %}>{{ cp_gallery.title }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+    <div class="overlay"></div>
+{% endblock %}
