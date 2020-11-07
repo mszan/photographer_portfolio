@@ -1,11 +1,11 @@
-{#{% extends 'infos/about.html' %}#}
+{% load crispy_forms_filters %}
 {% load static %}
 {% block contact_form %}
-    <form action="{% url "infos-about" %}" method="POST">
+    <form action="{% url "infos-bio" %}" method="POST">
         {% csrf_token %}
-        {{ contact_form.as_p }}
+        {{ contact_form|crispy }}
         <div class="form-actions">
-            <button type="submit">Send</button>
+            <button class="btn btn-light" type="submit">Send</button>
         </div>
     </form>
 {% endblock %}

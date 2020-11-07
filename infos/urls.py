@@ -1,11 +1,11 @@
 from django.urls import path
 from django.views.generic.base import RedirectView
 from django.contrib.staticfiles.storage import staticfiles_storage
-from .views import AboutView
+from .views import BioView
 
 
 urlpatterns = [
-    path('about/',
-         AboutView.as_view(),
-         name='infos-about'),
+    path('bio/',
+         BioView.as_view(),
+         name='infos-bio'),
 ]

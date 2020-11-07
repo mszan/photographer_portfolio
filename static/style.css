@@ -1,0 +1,117 @@
+@font-face {
+    font-family: 'YesevaOne';
+    src: url("fonts/YesevaOne/YesevaOne-Regular.ttf");
+    font-display: swap;
+}
+
+body {
+    font-family: YesevaOne, sans-serif!important;
+    color: white!important;
+    background-color: rgb(29, 31, 33) !important;
+}
+
+a {
+    text-decoration: none!important;
+}
+
+.card-custom {
+    height: 500px;
+    width: 100%;
+    background-color: black;
+    overflow: hidden;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, .5);
+}
+
+.card-custom:hover .card-custom__img {
+    transform: scale(1.2);
+}
+
+.card-custom:hover .card-custom__inner {
+    opacity: 1;
+}
+
+.card-custom__img {
+    height: 100%;
+    /*width: 100%;*/
+    transform: scale(1.1);
+    transition: transform 300ms;
+    opacity: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card-custom__inner {
+    background-color: rgba(31, 40, 46, .6);
+    transition: opacity 300ms;
+    color: white;
+    text-align: center;
+    top: 0;
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+}
+
+.card-custom__inner__desc-main {
+    font-size: .8rem;
+}
+
+
+/*SIDEBAR STYLE*/
+
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background-color: #1d1f20;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.content {
+    margin-left: 0;
+}
+
+/*SIDEBAR MEDIAQUERIES*/
+
+@media (min-width: 769px) {
+    /*CONTENT ADJUST WHEN SIDEBAR IS EXPANDED*/
+    .content {
+        margin-left: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebar--collapse span {
+        display: none;
+    }
+}

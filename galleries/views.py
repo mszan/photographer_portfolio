@@ -1,18 +1,6 @@
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
-
+from django.shortcuts import get_object_or_404
+from django.views.generic import DetailView
 from galleries.models import Gallery
-
-
-class GalleryListView(ListView):
-    model = Gallery
-    template_name = 'galleries/gallery_list.html'
-    context_object_name = 'galleries'
-    ordering = ['index']
-
-    def get_queryset(self, **kwargs):
-        galleries = Gallery.objects.filter(visible=True)
-        return galleries
 
 
 class GalleryDetailView(DetailView):

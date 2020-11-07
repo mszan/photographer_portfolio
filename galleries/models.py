@@ -1,6 +1,7 @@
 import os
 
 from django.db import models
+from django.utils.timezone import now
 from PIL import Image as PilImage
 
 
@@ -14,11 +15,12 @@ def image_upload_path(instance, filename):
 
 class Gallery(models.Model):
     visible = models.BooleanField(default=True)
+    is_new = models.BooleanField(default=0)
     index = models.IntegerField(default=0)
+    # 0 - main, displayed on landing; first on menu. 1 - n are next ones.
     title = models.TextField(blank=False)
     desc = models.TextField(blank=True)
-    pub_date = models.DateField(auto_now_add=True)
-    is_new = models.BooleanField(default=0)
+    pub_date = models.DateTimeField(default=now)
 
     class Meta:
         verbose_name_plural = 'Galleries'
@@ -31,10 +33,9 @@ class Image(models.Model):
     visible = models.BooleanField(default=True)
     index = models.IntegerField(default=0)
     gallery = models.ForeignKey(Gallery, related_name='images', on_delete=models.CASCADE)
-    title = models.TextField(blank=True)
-    desc = models.TextField(blank=True)
     file = models.ImageField(upload_to=image_upload_path)
     file_small = models.ImageField(blank=True, editable=False)
+    pub_date = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
         super().save()
@@ -51,10 +52,15 @@ class Image(models.Model):
         img_small = img.copy()
         img_small.thumbnail((1000, 1000))
 
-        # Saving with added '_sm' to filename.
+        # Saving file with added '_sm' to filename.
         ext = self.file.path.split('.')[-1]
         img_small_path = self.file.path.replace('.' + ext, '_sm.' + ext)
         img_small.save(img_small_path)
 
+        # Updating small file model field.
+        self.file_small = self.file.name.replace('.' + ext, '_sm.' + ext)
+        print(self.file_small.name)
+        super().save()
+
     def __str__(self):
-        return f'Image {self.id} - {self.title}'
+        return f'Gallery {self.gallery.id} - Image {self.id} - {self.title}'
