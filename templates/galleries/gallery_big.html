@@ -2,7 +2,6 @@
 {% load static %}
 {% block content %}
     {% if gallery %}
-        <h2>{{ gallery.title }}</h2>
         {% if images %}
             <div class="card-columns">
                 {% for image in images %}
