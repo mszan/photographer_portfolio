@@ -1,8 +1,8 @@
-from .models import Gallery
+from infos.models import Social
 
 
-def get_all_galleries(request):
+def get_all_socials(request):
     """
     Function that returns active galleries objects.
     """
-    return {'cp_galleries': Gallery.objects.filter(visible=1).order_by('index')}
+    return {'cp_socials': Social.objects.filter(visible=True).order_by('index')}

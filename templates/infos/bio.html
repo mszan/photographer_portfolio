@@ -1,14 +1,43 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
 {% load static %}
 {% block content %}
-    <div>
-        <h1>Bio header</h1>
+    <div class="row bio">
         {% if bio %}
-            <img src="{% get_media_prefix %}{{ bio.image }}" alt="{{ bio.image }}">
-            <p>{{ bio.text }}</p>
+            <div class="col-md-12 d-flex justify-content-center">
+                <img class="bio__img" src="{% get_media_prefix %}{{ bio.image }}" alt="{{ bio.image }}">
+            </div>
+            <div class="col-md-12">
+                <p>{{ bio.text }}</p>
+                <button type="button" class="btn btn-primary btn-block bio__btn" data-toggle="modal" data-target="#exampleModalCenter">
+                    Contact
+                </button>
+            </div>
         {% else %}
             Please create a single bio model instance and fill up the fields.
         {% endif %}
-        {% include 'infos/contact_form.html' %}
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Contact form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="modal-body">
+                            {{ contact_form|crispy }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary bio__btn" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary bio__btn">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
