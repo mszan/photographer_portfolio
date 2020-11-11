@@ -1,17 +1,18 @@
 from django.shortcuts import redirect
 from django.urls import path
-from galleries.views import GalleryDetailView
+from galleries.views import GallerySmallView, GalleryBigView
 from .models import Gallery
 
 
 urlpatterns = [
     # Landing url that redirect to first found gallery with index 0.
     path('',
-         lambda request: redirect(f'galleries/{Gallery.objects.filter(index=0).first().id}',permanent=False),
+         lambda request: redirect(f'galleries/{Gallery.objects.filter(index=0).first().id}/big/', permanent=False),
          name='galleries-landing'),
 
-    # Gallery details url.
-    path('galleries/<int:pk>/',
-         GalleryDetailView.as_view(),
-         name='galleries-detail'),
+    # Big gallery url.
+    path('galleries/<int:pk>/big/', GalleryBigView.as_view(), name='galleries-big'),
+
+    # Small gallery url.
+    path('galleries/<int:pk>/small/', GallerySmallView.as_view(), name='galleries-small'),
 ]

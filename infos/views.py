@@ -13,20 +13,21 @@ class BioView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(BioView, self).get_context_data(**kwargs)
+        context['page_title'] = 'bio'
         context['bio'] = Bio.objects.first()
         context['contact_form'] = ContactForm()
-        print(context)
         return context
 
     def post(self, request, *args, **kwargs):
         contact_form = ContactForm(self.request.POST)
         if contact_form.is_valid():
-            subject = contact_form.cleaned_data['subject']
             from_email = contact_form.cleaned_data['from_email']
+            to_email = Bio.objects.first().mail_to
+            subject = f"From: {from_email}, Subject: {contact_form.cleaned_data['subject']}"
             message = contact_form.cleaned_data['message']
             try:
-                send_mail(subject, message, from_email, ['jouissance3000@gmail.com'], fail_silently=False)
+                send_mail(subject, message, from_email, [to_email], fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            messages.success(request, 'Message sent.')
+            messages.success(request, 'Message sent, I will text you back shortly.')
             return redirect('infos-bio')

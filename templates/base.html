@@ -24,28 +24,40 @@
     {# Font Awesome kit. #}
     <script src="https://kit.fontawesome.com/1f366812cf.js" crossorigin="anonymous"></script>
 
-    <title>mszan app</title>
+    {% if page_title %}
+        <title>jouissance3000 - {{ page_title }}</title>
+    {% else %}
+        <title>jouissance3000</title>
+    {% endif %}
 </head>
 <body>
 <div class="container fluid">
     {% include 'sidebar.html' %}
-    {% if messages %}
-        <div class="row mt-3">
-            <div class="col-sm">
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }} alert-dismissible">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        {{ message }}
-                    </div>
-                {% endfor %}
+    <div class="content">
+        <div class="row">
+            <div class="col page__top--col">
+                <div class="page__top">
+                    <button type="button" id="sidebar__btn--collapse" class="btn m-3">
+                        <div class="hamburger-menu-icon">
+                            <div></div><div></div><div></div>
+                        </div>
+                    </button>
+                    <span class="h4 sidebar__header--mobile">jouissance3000</span>
+                </div>
             </div>
         </div>
-    {% endif %}
-    <div class="content">
-        <button type="button" id="sidebar--collapse" class="btn btn-info">
-            <i class="fas fa-align-left"></i>
-            <span>Toggle Sidebar</span>
-        </button>
+        {% if messages %}
+            <div class="row">
+                <div class="col-sm">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
         {% block content %}{% endblock %}
     </div>
 </div>
@@ -56,18 +68,20 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#dismiss, .overlay').on('click', function () {
+        $('#dismiss, .sidebar__overlay').on('click', function () {
             $('#sidebar').removeClass('active');
-            $('.overlay').removeClass('active');
+            $('.sidebar__overlay').removeClass('active');
         });
 
-        $('#sidebar--collapse').on('click', function () {
+        $('#sidebar__btn--collapse').on('click', function () {
             $('#sidebar').addClass('active');
-            $('.overlay').addClass('active');
+            $('.sidebar__overlay').addClass('active');
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
     });
+
+
 </script>
 
 </body>

@@ -3,11 +3,25 @@ from django.views.generic import DetailView
 from galleries.models import Gallery
 
 
-class GalleryDetailView(DetailView):
+class GallerySmallView(DetailView):
     model = Gallery
-    template_name = 'galleries/gallery_detail.html'
+    template_name = 'galleries/gallery_small.html'
 
     def get_context_data(self, **kwargs):
         gallery = get_object_or_404(Gallery, id=self.kwargs.get('pk'))
-        images = gallery.images.all()
-        return {'gallery': gallery, 'images': images}
+        images = gallery.images.filter(visible=1).order_by('index')
+        return {'gallery': gallery,
+                'images': images,
+                'page_title': gallery.title}
+
+
+class GalleryBigView(DetailView):
+    model = Gallery
+    template_name = 'galleries/gallery_big.html'
+
+    def get_context_data(self, **kwargs):
+        gallery = get_object_or_404(Gallery, id=self.kwargs.get('pk'))
+        images = gallery.images.filter(visible=1).order_by('index')
+        return {'gallery': gallery,
+                'images': images,
+                'page_title': gallery.title}
