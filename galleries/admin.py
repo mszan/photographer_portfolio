@@ -12,8 +12,6 @@ class ImageAdmin(admin.ModelAdmin):
 
     def file_small_preview(self, obj):
         return format_html('<a href="/admin/galleries/image/{}/change"><img src="{}" width="150" height="150"/></a>', obj.id, obj.file_small.url)
-        # return obj.file_small_preview
-
     file_small_preview.short_description = 'Preview'
     file_small_preview.allow_tags = True
 
@@ -24,7 +22,7 @@ class ImageAdmin(admin.ModelAdmin):
 
 
 class GalleryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'visible', 'index', 'title', 'get_images_count')
+    list_display = ('id', 'visible', 'main', 'index', 'title', 'get_images_count')
 
     def get_queryset(self, request):
         qs = super(GalleryAdmin, self).get_queryset(request)
@@ -32,8 +30,6 @@ class GalleryAdmin(admin.ModelAdmin):
 
     def get_images_count(self, obj):
         return format_html('<a href="/admin/galleries/image/?gallery_id={}">{}</a>', obj.id, obj.images_count)
-        # return obj.file_small_preview
-
     get_images_count.short_description = 'Images'
 
 

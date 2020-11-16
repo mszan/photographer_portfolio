@@ -12,7 +12,8 @@ class GallerySmallView(DetailView):
         images = gallery.images.filter(visible=1).order_by('index')
         return {'gallery': gallery,
                 'images': images,
-                'page_title': gallery.title}
+                'page_title': gallery.title,
+                'list_for_random_margin': range(2, 10)}
 
 
 class GalleryBigView(DetailView):

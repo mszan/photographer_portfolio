@@ -7,7 +7,7 @@ from .models import Gallery
 urlpatterns = [
     # Landing url that redirect to first found gallery with index 0.
     path('',
-         lambda request: redirect(f'galleries/{Gallery.objects.filter(index=0).first().id}/big/', permanent=False),
+         lambda request: redirect(f'galleries/{Gallery.objects.filter(main=True).first().id}/big/', permanent=False),
          name='galleries-landing'),
 
     # Big gallery url.
