@@ -81,7 +81,16 @@
         });
     });
 
+    $('#collapseGalleries').on('show.bs.collapse', function () {
+        $('#collapseIcon').removeClass("fa-caret-right").addClass("fa-caret-down");
+    });
 
+    $('#collapseGalleries').on('hide.bs.collapse', function () {
+        $('#collapseIcon').removeClass("fa-caret-down").addClass("fa-caret-right");
+    });
+
+    carouselEl = $('.carousel')
+    carouselEl.carousel('pause');
 </script>
 
 </body>
