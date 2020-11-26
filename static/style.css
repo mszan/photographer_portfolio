@@ -157,6 +157,10 @@ and (orientation : landscape) {
     #sidebar__btn--collapse {
         display: none;
     }
+
+    .bio__img {
+    margin: 0!important;
+}
 }
 
 @media (max-width: 768px) {
@@ -307,6 +311,8 @@ polyline {
     max-height: 60vh;
     max-width: 100%;
     margin: 0 0 1rem 0;
+    background-size: cover;
+    background-position: center;
 }
 
 .bio__btn:hover {

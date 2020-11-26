@@ -3,6 +3,8 @@ from django.db import models
 
 class Bio(models.Model):
     image = models.ImageField()
+    image_height = models.PositiveIntegerField()
+    image_width = models.PositiveIntegerField()
     text = models.TextField()
     mail_to = models.EmailField()
 
