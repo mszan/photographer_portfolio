@@ -3,3 +3,7 @@ venv
 media
 db.sqlite3
 __pycache__/
+/static/admin_interface/
+/static/admin/
+/static/ckeditor/
+/static/colorfield/
