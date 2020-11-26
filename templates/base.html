@@ -73,6 +73,10 @@
             $('.sidebar__overlay').removeClass('active');
         });
 
+        {% if not photo_series_sidebar_collapse %}
+            $('#collapseGalleries').addClass('show')
+        {% endif %}
+
         $('#sidebar__btn--collapse').on('click', function () {
             $('#sidebar').addClass('active');
             $('.sidebar__overlay').addClass('active');
@@ -88,6 +92,7 @@
     $('#collapseGalleries').on('hide.bs.collapse', function () {
         $('#collapseIcon').removeClass("fa-caret-down").addClass("fa-caret-right");
     });
+
 
     carouselEl = $('.carousel')
     carouselEl.carousel('pause');
