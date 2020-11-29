@@ -9,7 +9,6 @@
                     {% else %}
                         class="gallery-small_img gallery-small_img--odd" style="margin-right: {{ list_for_random_margin | random }}vw"
                     {% endif %}>
-{#                    {{ list_for_random_margin | random }}#}
                     <img class="gallery-small__img--img" src="{% get_media_prefix %}{{ image.file_small }}" alt="{{ image.file_small }}">
                 </div>
             {% endfor %}
