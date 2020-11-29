@@ -22,6 +22,8 @@ a {
 }
 
 hr {
+    width: 100px;
+    margin: 0;
     border-color: #444444!important;
 
 }
@@ -159,8 +161,12 @@ and (orientation : landscape) {
     }
 
     .bio__img {
-    margin: 0!important;
-}
+        margin: 0!important;
+    }
+
+    .sidebar__ul--bottom {
+        bottom: 40px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -174,7 +180,6 @@ and (orientation : landscape) {
 
 .sidebar__ul--bottom {
     position: absolute;
-    bottom: 40px;
 }
 
 .sidebar__ul--bottom ul {
@@ -203,7 +208,6 @@ and (orientation : portrait) {
     }
 }
 
-
 .carousel-fade .carousel-item {
     opacity: 0;
     transition-duration: .6s;
@@ -228,11 +232,6 @@ and (orientation : portrait) {
 .carousel-fade .active.carousel-item-prev {
     transform: translateX(0);
     transform: translate3d(0, 0, 0);
-}
-
-.carousel-inner {
-    /*width: 100vw!important;*/
-    /*max-width: 100vw!important;*/
 }
 
 .carousel-inner img {
@@ -261,23 +260,22 @@ and (orientation : portrait) {
 }
 
 .carousel-control-next > button {
-    right: 8vw !important;
+    right: 10vw !important;
 }
 
 .carousel-control-prev > button {
     left: 10vw !important;
 }
 
-
 /*ARROW BUTTONS FOR SLIDER*/
 
 .arrow {
-    opacity: .1;
+    opacity: .5;
     cursor: pointer;
     position: absolute;
     top: 50%;
     margin-top: -45px;
-    margin-left: -35px;
+    /*margin-left: -35px;*/
     width: 70px;
     height: 90px;
     background-color: transparent;
