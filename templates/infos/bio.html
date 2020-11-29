@@ -8,17 +8,6 @@
                 <div class="bio__img" style="background-image: url({% get_media_prefix %}{{ bio.image }}); height: {{ bio.image_height }}px; width: {{ bio.image_width }}px">
                 </div>
             </div>
-            {#            <div class="col-md-6 d-flex flex-column">#}
-            {#                <div class="">#}
-            {#                    <p>{{ bio.text }}</p>#}
-            {#                </div>#}
-            {#                <div style="width: 100%">#}
-            {#                    <button type="button" class="btn btn-primary btn-block bio__btn" data-toggle="modal" data-target="#exampleModalCenter">#}
-            {#                        Contact#}
-            {#                    </button>#}
-            {#                </div>#}
-            {#            </div>#}
-
             <div class="col-md-6 d-flex align-items-end">
                 <div>
                     {{ bio.text|safe }}
