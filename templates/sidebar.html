@@ -34,6 +34,9 @@
         {% if cp_socials %}
             <div class="sidebar__ul--bottom">
                 <ul>
+                    <li>
+                        <hr class="d-lg-none">
+                    </li>
                     {% if 'bio' in request.path %}
                         <li class="sidebar__li--active">
                             <a href="{% url 'infos-bio' %}">Bio / Contact</a>
