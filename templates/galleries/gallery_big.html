@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+    <style>
+        body, html {
+            overflow: hidden;
+        }
+    </style>
     <div class="row">
         <div class="col gallery-big">
             <div id="big-carousel" class="carousel slide carousel-fade">
@@ -20,7 +25,7 @@
                 <a class="carousel-control-prev" href="#big-carousel" role="button" data-slide="prev">
                     <button class="arrow">
                         <svg width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">
-                    <polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="
+                    <polyline fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="
                     45.63,75.8 0.375,38.087 45.63,0.375 "></polyline>
                 </svg>
                     </button>
@@ -29,7 +34,7 @@
                 <a class="carousel-control-next" href="#big-carousel" role="button" data-slide="next">
                     <button class="arrow">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">
-                    <polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 "></polyline>
+                    <polyline fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 "></polyline>
                 </svg>
                     </button>
                 </a>
