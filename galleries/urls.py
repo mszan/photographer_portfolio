@@ -5,11 +5,6 @@ from .models import Gallery
 
 
 urlpatterns = [
-    # Landing url that redirect to first found gallery with index 0.
-    # path('',
-    #      lambda request: redirect(f'galleries/{Gallery.objects.filter(main=True).first().id}/big/', permanent=False),
-    #      name='galleries-landing'),
-
     # Landing url.
     path('', GalleryLandingView.as_view(), name='landing'),
 
