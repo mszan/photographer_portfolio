@@ -51,8 +51,8 @@ class Image(models.Model):
         # IMAGE FIELD
         img = PilImage.open(self.file.path)
 
-        max_height = 3000
-        max_width = 4000
+        max_height = 1400
+        max_width = 1400
         if img.height >= max_height or img.width >= max_width:
             output_size = (max_height, max_width)
             img.thumbnail(output_size)
@@ -60,7 +60,7 @@ class Image(models.Model):
 
         # Creating copy of image and resizing it to make it thumbnail.
         img_small = img.copy()
-        img_small.thumbnail((1400, 1400))
+        img_small.thumbnail((700, 700))
 
         # Saving file with added '_sm' to filename.
         ext = self.file.path.split('.')[-1]
