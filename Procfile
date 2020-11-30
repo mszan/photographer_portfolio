@@ -1,1 +1,1 @@
-web: gunicorn gerd:app
+web: gunicorn gerd.wsgi
