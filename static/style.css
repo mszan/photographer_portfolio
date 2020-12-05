@@ -112,6 +112,10 @@ textarea:focus, input:focus, button:focus {
     margin-top: 1rem!important;
 }
 
+.sidebar__galleries li {
+    margin-top: .5rem;
+}
+
 .sidebar__li--active {
     font-family: Assistant-Bold, sans-serif!important;
     padding-left: 20px;
@@ -332,6 +336,16 @@ polyline {
 
 .modal-header .close {
     color: white!important;
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 75vw !important;
+    }
+}
+
+.close {
+    outline: none!important;
 }
 
 /*ALERT*/
