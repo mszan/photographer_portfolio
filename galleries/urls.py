@@ -9,7 +9,7 @@ urlpatterns = [
     path('', GalleryLandingView.as_view(), name='landing'),
 
     # Big gallery url.
-    path('galleries/<int:pk>/big/', GalleryBigView.as_view(), name='galleries-big'),
+    path('<int:category_id>/<int:gallery_id>/big/', GalleryBigView.as_view(), name='galleries-big'),
 
     # Small gallery url.
     path('galleries/<int:pk>/small/', GallerySmallView.as_view(), name='galleries-small'),

@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db.models import Count
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
-from galleries.models import Gallery, Image
+from galleries.models import Gallery, Image, Category
 
 
 class ImageAdmin(admin.ModelAdmin):
@@ -22,7 +22,7 @@ class ImageAdmin(admin.ModelAdmin):
 
 
 class GalleryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'visible', 'main', 'index', 'title', 'get_images_count')
+    list_display = ('id', 'visible', 'main', 'index', 'title', 'category', 'get_images_count')
 
     def get_queryset(self, request):
         qs = super(GalleryAdmin, self).get_queryset(request)
@@ -33,5 +33,10 @@ class GalleryAdmin(admin.ModelAdmin):
     get_images_count.short_description = 'Images'
 
 
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'visible', 'title', 'index')
+
+
 admin.site.register(Image, ImageAdmin)
 admin.site.register(Gallery, GalleryAdmin)
+admin.site.register(Category, CategoryAdmin)

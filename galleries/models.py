@@ -14,11 +14,24 @@ def image_upload_path(instance, filename):
     return os.path.join('images', 'galleries', str(instance.gallery.id), filename)
 
 
+class Category(models.Model):
+    visible = models.BooleanField(default=True)
+    index = models.IntegerField(default=0)
+    title = models.TextField(blank=False)
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.title
+
+
 class Gallery(models.Model):
     visible = models.BooleanField(default=True)
     main = models.BooleanField(default=False)
     index = models.IntegerField(default=0)
     title = models.TextField(blank=False)
+    category = models.ForeignKey(Category, related_name='galleries', on_delete=models.DO_NOTHING)
 
     class Meta:
         verbose_name_plural = 'Galleries'
