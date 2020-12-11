@@ -16,7 +16,6 @@ class BioView(TemplateView):
         context['page_title'] = 'bio'
         context['bio'] = Bio.objects.first()
         context['contact_form'] = ContactForm()
-        context['photo_series_sidebar_collapse'] = True
         return context
 
     def post(self, request, *args, **kwargs):

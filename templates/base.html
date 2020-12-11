@@ -97,10 +97,6 @@
             $('.sidebar__overlay').removeClass('active');
         });
 
-        {% if not photo_series_sidebar_collapse %}
-            $('#collapseGalleries').addClass('show')
-        {% endif %}
-
         $('#sidebar__btn--collapse').on('click', function () {
             $('#sidebar').addClass('active');
             $('.sidebar__overlay').addClass('active');
@@ -117,6 +113,10 @@
         $('#collapse{{cp_category.id}}').on('hide.bs.collapse', function () {
             $('#collapse{{cp_category.id}}Icon').removeClass("fa-caret-down").addClass("fa-caret-right");
         });
+
+        {% if gallery.category.id == cp_category.id %}
+            $('#collapse{{cp_category.id}}').addClass('show')
+        {% endif %}
     {% endfor %}
 
     carouselEl = $('.carousel')

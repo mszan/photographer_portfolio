@@ -25,16 +25,16 @@ class GalleryLandingView(TemplateView):
         images = gallery.images.filter(visible=1).order_by('index')
         return {'gallery': gallery,
                 'images': images,
-                'page_title': gallery.title,
-                'photo_series_sidebar_collapse': True}
+                'page_title': gallery.title}
 
 
 class GalleryBigView(DetailView):
     model = Gallery
     template_name = 'galleries/gallery_big.html'
+    pk_url_kwarg = 'gallery_id'
 
     def get_context_data(self, **kwargs):
-        gallery = get_object_or_404(Gallery, id=self.kwargs.get('pk'))
+        gallery = get_object_or_404(Gallery, id=self.kwargs.get('gallery_id'))
         images = gallery.images.filter(visible=1).order_by('index')
         return {'gallery': gallery,
                 'images': images,
