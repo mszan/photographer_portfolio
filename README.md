@@ -11,7 +11,7 @@
   * [External libraries](#external-libraries)
 
 ## General info
-Photographer portfolio is a website built for a friend of mine.
+This is a website built for a photographer. It allows users to view photo galleries managed by the photographer.
 ![](https://i.imgur.com/FgB1tpC.png)
 
 ## Live demo
@@ -26,8 +26,8 @@ Website is hosted on VPS (nginx, gunicorn).
 ## Structure
 ### Description
 This website is based on Django (both backend and frontend) and is divided into two main parts:
-* **public site** where people can see galleries and images (homepage, galleries, bio)
-* **admin site** where an administrator can manage the content (basically a modifed built-in Django's admin site)
+* **public** - place where people can see galleries and images (homepage, galleries, bio)
+* **admin** - place where an administrator can manage the content (it is basically a modifed built-in Django's admin site)
 
 **Note:** I decided to use built-in Django's admin site in view of customer's requirements.
 
