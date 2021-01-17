@@ -11,14 +11,14 @@
   * [External libraries](#external-libraries)
 
 ## General info
-This is a website built for a photographer. It allows users to view photo galleries managed by the photographer.
+This is a web app built for a photographer. It allows users to view photo galleries managed by the photographer.
 ![](https://i.imgur.com/FgB1tpC.png)
 
 ## Live demo
 Live web demo is available at [gerd.mszanowski.pl](https://gerd.mszanowski.pl).
 Website is hosted on VPS (nginx, gunicorn).
 
-### Features
+## Features
 - Website is fully responsive - mobile, tablet, desktop;
 - Administrators can manage galleries, photos, bio section and social links through customised Django Admin,
 - Visitors can send messages via form in bio section.
