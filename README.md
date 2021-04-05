@@ -1,14 +1,4 @@
 # Photographer portfolio
-## Table of contents
-* [General info](#general-info)
-* [Live demo](#live-demo)
-* [Features](#features)
-* [Structure](#structure)
-  * [Description](#description)
-  * [Django apps](#django-apps)
-* [Requirements](#requirements)
-  * [Python packages](#python-packages)
-  * [External libraries](#external-libraries)
 
 ## General info
 This is a web app built for a photographer. It allows users to view photo galleries managed by the photographer.
