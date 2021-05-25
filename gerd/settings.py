@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
-import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'it&@fjts++^69&9&_^ii&h!7429x+nsg#7h2+vk(((5+b+3e4a'
+SECRET_KEY = 'not_secret'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.94', '127.0.0.1', 'https://jouissance3000.herokuapp.com/', 'jouissance3000.eu', 'www.jouissance3000.eu']
+ALLOWED_HOSTS = ['127.0.0.1', 'https://gerd.mszanowski.pl', 'gerd.mszanowski.pl', 'www.gerd.mszanowski.pl', 'jouissance3000.eu', 'www.jouissance3000.eu']
 
 
 # Application definition
@@ -86,9 +85,13 @@ WSGI_APPLICATION = 'gerd.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'postgres',
+        'PORT': 5432,
+        }
 }
 
 
@@ -128,7 +131,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(os.path.join(BASE_DIR), 'static'),
@@ -141,12 +144,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'app.mszanowski@gmail.com'
-EMAIL_HOST_PASSWORD = 'ftpdipcgdsydorvl'
-DEFAULT_EMAIL_FROM = 'app.mszanowski@gmail.com'
+# EMAIL_HOST_USER = ''
+# EMAIL_HOST_PASSWORD = ''
+# DEFAULT_EMAIL_FROM = ''
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-# Activate Django-Heroku.
-django_heroku.settings(locals())

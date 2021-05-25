@@ -6,7 +6,6 @@ This is a web app built for a photographer. It allows users to view photo galler
 
 ## Live demo
 Live web demo is available at [gerd.mszanowski.pl](https://gerd.mszanowski.pl).
-Website is hosted on VPS (nginx, gunicorn).
 
 ## Features
 - Website is fully responsive - mobile, tablet, desktop;

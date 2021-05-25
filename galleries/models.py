@@ -31,7 +31,7 @@ class Gallery(models.Model):
     main = models.BooleanField(default=False)
     index = models.IntegerField(default=0)
     title = models.TextField(blank=False)
-    category = models.ForeignKey(Category, related_name='galleries', on_delete=models.DO_NOTHING)
+    category = models.ForeignKey(Category, related_name='galleries', on_delete=models.DO_NOTHING, default=None, null=True)
 
     class Meta:
         verbose_name_plural = 'Galleries'

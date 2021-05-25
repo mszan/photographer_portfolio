@@ -8,3 +8,6 @@ __pycache__/
 /static/admin/
 /static/ckeditor/
 /static/colorfield/
+.history
+.vscode
+postgres
